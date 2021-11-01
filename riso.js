@@ -152,7 +152,7 @@ function ditherCMYKLayers(image) {
 }
 
 
-
+// colours seem off, like dithernig isn't completely working
 
 function index(x, y, imageWidth) {
   return x + y * imageWidth;
