@@ -64,6 +64,8 @@ function ditherCMYKLayers(image) {
       let newY = Math.round(factor * oldY);
       let newK = Math.round(factor * oldK);
 
+      console.log(oldM);
+      
       // set current pixel true/false base on thresholded pixel
       let newCMYK = new CMYKColour();
       newCMYK.setColourFromCMYK(newC, newM, newY, newK);
@@ -74,13 +76,13 @@ function ditherCMYKLayers(image) {
       magentas[x][y] = Boolean(newM);
       yellows[x][y] = Boolean(newY);
       blacks[x][y] = Boolean(newK);
-
+      /*
       // find quantisation error ("remainder" of thresholding)
       let errC = oldC - newC;
       let errM = oldM - newM;
-      let errY = oldM - newY;
-      let errK = oldM - newK;
-
+      let errY = oldY - newY;
+      let errK = oldK - newK;
+      
       // distribute the quantisation errors out amongst surrounding pixels - right, lower left, below, lower right
       let index = (x + 1 + y * imageWidth) * 4;
       let cmykPix = new CMYKColour();
@@ -113,7 +115,7 @@ function ditherCMYKLayers(image) {
       image.pixels[index] = finalCMYK.red;
       image.pixels[index + 1] = finalCMYK.green;
       image.pixels[index + 2] = finalCMYK.blue;
-
+      
       index = (x + y+1 * imageWidth) * 4;
       //cmykPix = new CMYKColour();
       r = image.pixels[index]
@@ -145,6 +147,7 @@ function ditherCMYKLayers(image) {
       image.pixels[index] = finalCMYK.red;
       image.pixels[index + 1] = finalCMYK.green;
       image.pixels[index + 2] = finalCMYK.blue;
+      */
     }
   }
   image.updatePixels();
