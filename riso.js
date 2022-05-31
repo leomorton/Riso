@@ -11,7 +11,7 @@ let yellows = [];
 let blacks = [];
 
 function preload() {
-  srcImage = loadImage("static/image2.jpg");
+  srcImage = loadImage("static/image2.png");
 }
 
 function setup() {
@@ -20,7 +20,7 @@ function setup() {
   createCanvas(1500, 500);
 
   background(255);
-
+  
   srcImage.resize(sourceImageResolution, sourceImageResolution);
   image(srcImage, 0, 0, 500, 500);
   newImage = srcImage;
@@ -43,10 +43,12 @@ function ditherCMYKLayers(image) {
   let imageHeight = image.height;
   for (let y = 0; y < imageHeight - 1; y++) {
     for (let x = 0; x < imageWidth - 1; x++) {
+      
       let pixelIndex = (x + y * imageWidth) * 4;
       let r = image.pixels[pixelIndex];
       let g = image.pixels[pixelIndex + 1];
       let b = image.pixels[pixelIndex + 2];
+
       
       let oldPixel = new CMYKColour()
       oldPixel.setColourFromRGB(r, g, b);
