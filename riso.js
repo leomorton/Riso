@@ -44,6 +44,13 @@ function setup() {
     drawDots(blacks, black, 1000, 0);
 }
 
+function prepareSourceImage(sourceImage) {
+    // split source image to CMYK layers - possibility for configurable split in future??
+    // // get colour of pixel - translate to cmyk. fill pixel of new image per layer. one for c/m/y/k
+    // run a single image through a thresholding step
+    // // dithering relies on knowing the 'error' or remainder of the thresholding step - does this have to be done all at once?
+}
+
 function ditherCMYKLayers(image) {
     // fill pixel boolean arrays
     cyans = Array(image.width)
@@ -180,7 +187,7 @@ function drawDots(dotArray, hexColour, xPos, yPos) {
 
     noStroke();
     fill(hexColour);
-    let dotSize = 1;
+    let dotSize = 0.75;
     for (let x = 0; x < dotArray.length; x++) {
         columnError = 0.0; //Math.random(0, 5);
         for (let y = 0; y < dotArray[0].length; y++) {
@@ -209,6 +216,8 @@ function index(x, y, imageWidth) {
 // split up the CYMK-dither-layer steps. split the image to layers. dither each layer. draw the dithered image. single
 
 // half tone effect instead of dither? other dithering algorithms?
+
+// soft-edged ellipse for drawing the dots.. probably needs to be a shader. p5js filters?
 
 // UI to adjust source res, target DPI/res, thresholding during dither
 
